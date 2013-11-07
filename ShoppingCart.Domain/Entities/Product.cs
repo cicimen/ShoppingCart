@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace ShoppingCart.Domain.Entities
 {
@@ -11,12 +13,6 @@ namespace ShoppingCart.Domain.Entities
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
-
-        [Required(ErrorMessage = "Please enter a product name")]
-        public string Name { get; set; }
-
-        [DataType(DataType.MultilineText)]
-        public string Description { get; set; }
 
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a positive price")]
@@ -31,8 +27,21 @@ namespace ShoppingCart.Domain.Entities
         [Required(ErrorMessage = "Please specify a category")]
         public int CategoryID { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
+        public DateTime DateModified { get; set; }
+
+        public int Inventory { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public virtual List<ProductImage> ProductImages { get; set; }
+
+        public virtual List<ProductAttribute> ProductAttributes { get; set; }
+
+        public virtual List<ProductTranslation> ProductTranslations { get; set; }
+
+        public virtual ICollection<Product> RelatedProducts { get; set; }
 
     }
 }

@@ -14,6 +14,15 @@ namespace ShoppingCart.Domain.Concrete
         {
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new CategoryNodeConfiguration());
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.RelatedProducts)
+                .WithMany()
+                .Map(m =>
+                {
+                    m.MapLeftKey("ProductID");
+                    m.MapRightKey("RelatedID");
+                    m.ToTable("RelatedProduct");
+                });
         }
 
     }

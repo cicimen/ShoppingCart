@@ -88,9 +88,16 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\CategoryImage.cs" />
+    <Compile Include="Entities\CategoryTranslation.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductAttribute.cs" />
+    <Compile Include="Entities\ProductAttributeTranslation.cs" />
+    <Compile Include="Entities\ProductAttributeValue.cs" />
+    <Compile Include="Entities\ProductAttributeValueTranslation.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
+    <Compile Include="Entities\ProductTranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

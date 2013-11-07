@@ -24,8 +24,8 @@ namespace ShoppingCart.Domain.Concrete
                 Product dbEntry = context.Products.Find(product.ProductID);
                 if (dbEntry != null)
                 {
-                    dbEntry.Name = product.Name;
-                    dbEntry.Description = product.Description;
+                    //dbEntry.Name = product.Name;
+                    //dbEntry.Description = product.Description;
                     dbEntry.OriginalPrice = product.OriginalPrice;
                     dbEntry.DiscountedPrice = product.DiscountedPrice;
                     dbEntry.Enabled = product.Enabled;

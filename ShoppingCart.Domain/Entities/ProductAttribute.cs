@@ -12,10 +12,10 @@ namespace ShoppingCart.Domain.Entities
 
         public int ProductID { get; set; }
 
-        public string Name { get; set; }
-
         public bool Enabled { get; set; }
 
-        public virtual Product Product {get;set;}
+        public virtual List<ProductAttributeTranslation> ProductAttributeTranslations { get; set; }
+
+        public virtual List<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }

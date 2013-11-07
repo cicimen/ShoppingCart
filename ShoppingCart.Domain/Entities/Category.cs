@@ -12,7 +12,11 @@ namespace ShoppingCart.Domain.Entities
     {
         public int CategoryID { get; set; }
 
-        public string CategoryName { get; set; }
+        public virtual List<CategoryTranslation> CategoryTranslations { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public DateTime DateModified { get; set; }
 
         public virtual Category Parent { get; set; }
         

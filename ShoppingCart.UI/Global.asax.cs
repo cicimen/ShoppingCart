@@ -14,6 +14,9 @@ namespace ShoppingCart.UI
     {
         protected void Application_Start()
         {
+            //bu satır veritabanını dolduruyor
+            System.Data.Entity.Database.SetInitializer(new ShoppingCart.UI.Models.SampleData());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
