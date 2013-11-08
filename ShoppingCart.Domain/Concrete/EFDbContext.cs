@@ -8,7 +8,9 @@ namespace ShoppingCart.Domain.Concrete
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -55,8 +57,8 @@ namespace ShoppingCart.Domain.Concrete
         public CategoryNodeConfiguration()
         {
             ToTable(typeof(CategoryNode).Name);
-
             HasKey(p => new { p.AncestorId, p.OffspringId });
+
         }
     }
 }

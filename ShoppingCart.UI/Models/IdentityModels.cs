@@ -10,7 +10,8 @@ namespace ShoppingCart.UI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            //: base("DefaultConnection")
+            : base("EFDbContext")
         {
         }
     }

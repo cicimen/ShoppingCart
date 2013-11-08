@@ -50,11 +50,12 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
@@ -84,18 +85,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICartRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Concrete\EFCartRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\CategoryImage.cs" />
     <Compile Include="Entities\CategoryTranslation.cs" />
     <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductAttribute.cs" />
     <Compile Include="Entities\ProductAttributeTranslation.cs" />
     <Compile Include="Entities\ProductAttributeValue.cs" />
     <Compile Include="Entities\ProductAttributeValueTranslation.cs" />
+    <Compile Include="Entities\ProductComment.cs" />
     <Compile Include="Entities\ProductImage.cs" />
     <Compile Include="Entities\ProductTranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
