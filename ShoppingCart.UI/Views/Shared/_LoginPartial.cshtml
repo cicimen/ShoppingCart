@@ -6,20 +6,19 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @if (Context.Session["Language"]== null || Context.Session["Language"]== "en"  )
-            {
-                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "tr" })" class="flagtr"></a>
-
+        <li class="language">
+            @if (Context.Session["Language"]== null || Context.Session["Language"] as string == "tr"  )
+            {               
+                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "en" })" class="flagus"></a>
             }
             else
             {
-                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "en" })" class="flagus"></a>
+                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "tr" })" class="flagtr"></a>
             }
         </li>
 
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink( User.Identity.GetUserName() , "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
@@ -28,7 +27,26 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            @if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+            {
+                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "en" })" class="flagus"></a>
+            }
+            else
+            {
+                <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "tr" })" class="flagtr"></a>
+            }
+        </li>
+
+        @if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+        {
+            <li>@Html.ActionLink("Üye Ol", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Üye Girişi", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
+        else
+        { 
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
     </ul>
 }

@@ -46,7 +46,7 @@ input[type="checkbox"].input-validation-error {
 
 
 
-div#categories { float: left; width: 8em; padding: .3em; }
+div#categories { float: left; width: 14em; padding: .3em; }
 
 .nav > li.disabled.nav-header > a {
     cursor: default;
@@ -55,10 +55,18 @@ div#categories { float: left; width: 8em; padding: .3em; }
     text-transform: uppercase;
 }
 
+li.language 
+{
+    vertical-align: bottom;
+    height: 50px;
+    display:table-cell;
+}
+
 a.flagtr
 {
-    background: url(../Content/Images/Flags/tr.gif) no-repeat top left;
+    background: url(../Content/Images/Flags/tr.gif) no-repeat  left;
      display: block;
+     height: 50px;
      /*width: 150px;
      height: 150px;
      text-indent: -9999px; /* hides the link text */*/
@@ -66,8 +74,9 @@ a.flagtr
 
 a.flagus
 {
-    background: url(../Content/Images/Flags/us.gif) no-repeat top left;
+    background: url(../Content/Images/Flags/us.gif) no-repeat  left;
      display: block;
+     height: 50px;
      /*width: 150px;
      height: 150px;
      text-indent: -9999px; /* hides the link text */*/

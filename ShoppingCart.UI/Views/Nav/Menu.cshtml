@@ -4,10 +4,24 @@
     <ul class="list-group nav">
         @foreach (var category in Model)
         {
-            <li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+            if (Context.Session["Language"]== null || Context.Session["Language"] as string == "tr"  )
+            { 
+                <li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+            }
+            else
+            { 
+                <li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>
+            }
             foreach (var childCategory in category.Children)
             {
-                <li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+                if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+                {
+                    <li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+                }
+                else
+                { 
+                    <li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>
+                }
             }
         }
     </ul>
