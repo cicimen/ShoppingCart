@@ -25,10 +25,10 @@ namespace ShoppingCart.WebUI.Controllers
 
         public ActionResult Index()
         {
-            ShoppingCart.Domain.Concrete.EFDbContext context = new ShoppingCart.Domain.Concrete.EFDbContext();
-            var category = context.Categories.Include(x => x.Offspring.Select(e => e.Offspring)).SingleOrDefault(y=> y.CategoryID ==5);
+            //ShoppingCart.Domain.Concrete.EFDbContext context = new ShoppingCart.Domain.Concrete.EFDbContext();
+            //var category = context.Categories.Include(x => x.Offspring.Select(e => e.Offspring)).SingleOrDefault(y=> y.CategoryID ==5);
 
-            var establishments = context.Categories.Where(x => x.Ancestors.Any(y => y.Separation > 3));
+            //var establishments = context.Categories.Where(x => x.Ancestors.Any(y => y.Separation > 3));
 
             return View(repository.Products.ToList());
         }

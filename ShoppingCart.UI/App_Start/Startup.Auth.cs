@@ -28,11 +28,11 @@ namespace ShoppingCart.UI
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "467450233371742",
+               appSecret: "424ccbf5608cef1a68fef8d3fe564de4");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication();
         }
     }
 }

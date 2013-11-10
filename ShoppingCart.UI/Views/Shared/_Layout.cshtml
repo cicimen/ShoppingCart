@@ -29,7 +29,11 @@
             </div>
         </div>
     </div>
+    
     <div class="container body-content">
+        <div id="categories">
+            @{ Html.RenderAction("Menu", "Nav"); }
+        </div>
         @RenderBody()
         <hr />
         <footer>

@@ -42,7 +42,16 @@ namespace ShoppingCart.UI.Models
                                    new CategoryTranslation
                                     {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Watch",CategoryDescription="Special Design Watch"}
                                   }
-                            }
+                            },
+                new Category{ DateCreated =DateTime.Now,
+                    DateModified = DateTime.Now,
+                    CategoryTranslations = new List<CategoryTranslation>
+                        {new CategoryTranslation
+                        {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Ceket",CategoryDescription="Özel Tasarım Ceket"},
+                        new CategoryTranslation
+                        {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Coat",CategoryDescription="Special Design Coat"}
+                        }
+                }
             };
 
             categories.Add(new Category
@@ -50,6 +59,8 @@ namespace ShoppingCart.UI.Models
                 DateCreated = DateTime.Now,
                 DateModified = DateTime.Now,
                 Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat"),
+                Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
                 CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
                                                 {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Erkek Saat",CategoryDescription="Özel Tasarım Erkek Saat"},
@@ -61,6 +72,8 @@ namespace ShoppingCart.UI.Models
             categories.Add(new Category{DateCreated = DateTime.Now,
                                         DateModified = DateTime.Now,
                                         Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Saat"),
+                                        Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
                                         CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
                                                 {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Kadın Saat",CategoryDescription="Özel Tasarım Kadın Saat"},
@@ -68,6 +81,21 @@ namespace ShoppingCart.UI.Models
                                                 {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Women Watch",CategoryDescription="Special Design Women Watch"}
                                             }
                                          });
+
+            categories.Add(new Category
+            {
+                DateCreated = DateTime.Now,
+                DateModified = DateTime.Now,
+                Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Ceket"),
+                Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Ceket") }},
+                CategoryTranslations = new List<CategoryTranslation>
+                                            {new CategoryTranslation
+                                                {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Erkek Ceket",CategoryDescription="Özel Tasarım Erkek Ceket"},
+                                            new CategoryTranslation
+                                                {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Men Coat",CategoryDescription="Special Design Men Coat"}
+                                            }
+            });
             #endregion
 
             #region Product

@@ -24,12 +24,17 @@ namespace ShoppingCart.Domain.Concrete
                 Product dbEntry = context.Products.Find(product.ProductID);
                 if (dbEntry != null)
                 {
-                    //dbEntry.Name = product.Name;
-                    //dbEntry.Description = product.Description;
-                    dbEntry.OriginalPrice = product.OriginalPrice;
+                    dbEntry.Category = product.Category;
+                    dbEntry.DateCreated = product.DateCreated;
+                    dbEntry.DateModified = product.DateModified;
                     dbEntry.DiscountedPrice = product.DiscountedPrice;
                     dbEntry.Enabled = product.Enabled;
-                    dbEntry.Category = product.Category;
+                    dbEntry.Inventory = product.Inventory;
+                    dbEntry.OriginalPrice = product.OriginalPrice;
+                    dbEntry.ProductAttributes = product.ProductAttributes;
+                    dbEntry.ProductImages = product.ProductImages;
+                    dbEntry.ProductTranslations = product.ProductTranslations;
+                    dbEntry.RelatedProducts = product.RelatedProducts;
                 }
             }
             context.SaveChanges();

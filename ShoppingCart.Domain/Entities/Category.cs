@@ -18,6 +18,8 @@ namespace ShoppingCart.Domain.Entities
 
         public DateTime DateModified { get; set; }
 
+        public string CategoryImagePath { get; set; }
+
         public virtual Category Parent { get; set; }
         
         public virtual ICollection<Category> Children { get; set; }

@@ -40,3 +40,35 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+
+
+
+
+
+div#categories { float: left; width: 8em; padding: .3em; }
+
+.nav > li.disabled.nav-header > a {
+    cursor: default;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a.flagtr
+{
+    background: url(../Content/Images/Flags/tr.gif) no-repeat top left;
+     display: block;
+     /*width: 150px;
+     height: 150px;
+     text-indent: -9999px; /* hides the link text */*/
+}
+
+a.flagus
+{
+    background: url(../Content/Images/Flags/us.gif) no-repeat top left;
+     display: block;
+     /*width: 150px;
+     height: 150px;
+     text-indent: -9999px; /* hides the link text */*/
+}
