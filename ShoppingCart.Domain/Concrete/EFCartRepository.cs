@@ -10,7 +10,7 @@ using ShoppingCart.Domain.Entities;
 
 namespace ShoppingCart.Domain.Concrete
 {
-    public class EFCartRepository : ICartRepository
+    public class EFCartRepository //: ICartRepository
     {
         private EFDbContext context = new EFDbContext();
 
@@ -21,6 +21,17 @@ namespace ShoppingCart.Domain.Concrete
         string ShoppingCartID { get; set; }
 
         public const string CartSessionKey = "CartID";
+
+        ////Alttaki iki metod interface'de staik metod kullanılamadığı için yazıldı.
+        //EFCartRepository ICartRepository.GetCart(HttpContextBase context)
+        //{
+        //    return EFCartRepository.GetCart(context);
+        //}
+
+        //EFCartRepository ICartRepository.GetCart(Controller controller)
+        //{
+        //    return EFCartRepository.GetCart(controller);
+        //}
 
         public static EFCartRepository GetCart(HttpContextBase context)
         {

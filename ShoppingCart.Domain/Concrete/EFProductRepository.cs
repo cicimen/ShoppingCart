@@ -34,6 +34,7 @@ namespace ShoppingCart.Domain.Concrete
                     dbEntry.ProductAttributes = product.ProductAttributes;
                     dbEntry.ProductImages = product.ProductImages;
                     dbEntry.ProductTranslations = product.ProductTranslations;
+                    dbEntry.ProductURLText = product.ProductURLText;
                     dbEntry.RelatedProducts = product.RelatedProducts;
                 }
             }

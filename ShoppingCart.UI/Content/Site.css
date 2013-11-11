@@ -81,3 +81,8 @@ a.flagus
      height: 150px;
      text-indent: -9999px; /* hides the link text */*/
 }
+
+body
+{
+    font-family: Trebuchet MS, sans-serif;
+}

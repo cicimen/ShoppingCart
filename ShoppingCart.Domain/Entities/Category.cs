@@ -20,6 +20,8 @@ namespace ShoppingCart.Domain.Entities
 
         public string CategoryImagePath { get; set; }
 
+        public string CategoryURLText { get; set; }
+
         public virtual Category Parent { get; set; }
         
         public virtual ICollection<Category> Children { get; set; }

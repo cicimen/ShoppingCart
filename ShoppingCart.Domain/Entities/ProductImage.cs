@@ -14,6 +14,8 @@ namespace ShoppingCart.Domain.Entities
 
         public string ProductImagePath { get; set; }
 
+        public string ProductImageMimeType { get; set; }
+
         public short DisplayOrder { get; set; }
 
         public virtual Product Product { get; set; }

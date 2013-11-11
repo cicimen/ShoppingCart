@@ -11,6 +11,7 @@ namespace ShoppingCart.Domain.Concrete
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -18,8 +18,11 @@ namespace ShoppingCart.UI.Controllers
             repository = repo;
         }
 
-        public PartialViewResult Menu()
+        [ChildActionOnly]
+        public PartialViewResult Menu(string categoryLinkText = null)
         {
+            ViewBag.SelectedCategory = categoryLinkText;
+            //Parent kategorisi olmayan kategorileri dönüyor.
             IEnumerable<Category> categories = repository.Categories.Where(x=>x.Parent == null).Select(x => x);
             return PartialView(categories);
         }

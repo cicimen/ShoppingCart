@@ -27,6 +27,8 @@ namespace ShoppingCart.Domain.Entities
         [Required(ErrorMessage = "Please specify a category")]
         public int CategoryID { get; set; }
 
+        public string ProductURLText { get; set; }
+
         public DateTime DateCreated { get; set; }
 
         public DateTime DateModified { get; set; }

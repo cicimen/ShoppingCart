@@ -27,6 +27,7 @@ namespace ShoppingCart.UI.Models
             {
                 new Category{ DateCreated =DateTime.Now,
                               DateModified = DateTime.Now,
+                              CategoryURLText ="cuzdan",
                               CategoryTranslations = new List<CategoryTranslation>
                                   {new CategoryTranslation
                                     {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Cüzdan",CategoryDescription="Özel Tasarım Cüzdan"},
@@ -36,6 +37,7 @@ namespace ShoppingCart.UI.Models
                             },
                 new Category{ DateCreated =DateTime.Now,
                               DateModified = DateTime.Now,
+                              CategoryURLText ="saat",
                               CategoryTranslations = new List<CategoryTranslation>
                                   {new CategoryTranslation
                                     {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Saat",CategoryDescription="Özel Tasarım Saat"},
@@ -45,11 +47,22 @@ namespace ShoppingCart.UI.Models
                             },
                 new Category{ DateCreated =DateTime.Now,
                     DateModified = DateTime.Now,
+                    CategoryURLText ="ceket",
                     CategoryTranslations = new List<CategoryTranslation>
                         {new CategoryTranslation
                         {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Ceket",CategoryDescription="Özel Tasarım Ceket"},
                         new CategoryTranslation
                         {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Coat",CategoryDescription="Special Design Coat"}
+                        }
+                },
+                new Category{ DateCreated =DateTime.Now,
+                    DateModified = DateTime.Now,
+                    CategoryURLText ="t-shirt",
+                    CategoryTranslations = new List<CategoryTranslation>
+                        {new CategoryTranslation
+                        {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="T-Shirt",CategoryDescription="Özel Tasarım T-Shirt"},
+                        new CategoryTranslation
+                        {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="T-Shirt",CategoryDescription="Special Design T-Shirt"}
                         }
                 }
             };
@@ -58,6 +71,7 @@ namespace ShoppingCart.UI.Models
             {
                 DateCreated = DateTime.Now,
                 DateModified = DateTime.Now,
+                CategoryURLText="erkek-saat",
                 Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat"),
                 Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
                                                     categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
@@ -71,6 +85,7 @@ namespace ShoppingCart.UI.Models
 
             categories.Add(new Category{DateCreated = DateTime.Now,
                                         DateModified = DateTime.Now,
+                                        CategoryURLText = "kadin-saat",
                                         Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Saat"),
                                         Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
                                                     categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
@@ -86,14 +101,15 @@ namespace ShoppingCart.UI.Models
             {
                 DateCreated = DateTime.Now,
                 DateModified = DateTime.Now,
+                CategoryURLText = "kadin-ceket",
                 Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Ceket"),
                 Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
                                                     categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Ceket") }},
                 CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
-                                                {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Erkek Ceket",CategoryDescription="Özel Tasarım Erkek Ceket"},
+                                                {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Kadın Ceket",CategoryDescription="Özel Tasarım Kadın Ceket"},
                                             new CategoryTranslation
-                                                {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Men Coat",CategoryDescription="Special Design Men Coat"}
+                                                {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Women Coat",CategoryDescription="Special Design Women Coat"}
                                             }
             });
             #endregion
@@ -101,6 +117,116 @@ namespace ShoppingCart.UI.Models
             #region Product
             var products = new List<Product>
             {
+                new Product
+                {
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="T-Shirt"),
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<Product>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Good, Bad, Ugly T-Shirt",ProductDescription="Good, Bad, Ugly T-Shirt"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Good, Bad, Ugly T-Shirt",ProductDescription="Good, Bad, Ugly T-Shirt"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/goodbadugly1.jpg"
+                        }
+                        //,
+                        //new ProductImage
+                        //{
+                        //    DisplayOrder=2,
+                        //    ProductImagePath = "path2"
+                        //}
+                    },
+                    ProductAttributes = new List<ProductAttribute>
+                        {
+                            new ProductAttribute
+                            {
+                                Enabled=true,
+                                ProductAttributeTranslations= new List<ProductAttributeTranslation>
+                                                                {
+                                                                    new ProductAttributeTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductAttributeDescription ="",
+                                                                        ProductAttributeName ="Renk"
+                                                                    },
+                                                                    new ProductAttributeTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductAttributeDescription ="",
+                                                                        ProductAttributeName ="Color",
+                                                                    }
+                                                                },
+                                ProductAttributeValues = new List<ProductAttributeValue>
+                                                                {
+                                                                     new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Siyah"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                },
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Erkek Saat"),
@@ -124,12 +250,14 @@ namespace ShoppingCart.UI.Models
                         new ProductImage
                         {
                             DisplayOrder=1,
-                            ProductImagePath = "path1"
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derierkeksaat1.jpg"
                         },
                         new ProductImage
                         {
                             DisplayOrder=2,
-                            ProductImagePath = "path2"
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derierkeksaat2.jpg"
                         }
                     },
                     ProductAttributes = new List<ProductAttribute>
@@ -232,13 +360,15 @@ namespace ShoppingCart.UI.Models
                         new ProductImage
                         {
                             DisplayOrder=1,
-                            ProductImagePath = "path1"
-                        },
-                        new ProductImage
-                        {
-                            DisplayOrder=2,
-                            ProductImagePath = "path2"
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derikadinsaat1.jpg"
                         }
+                        //,
+                        //new ProductImage
+                        //{
+                        //    DisplayOrder=2,
+                        //    ProductImagePath = "path2"
+                        //}
                     },
                     ProductAttributes = new List<ProductAttribute>
                         {
@@ -334,6 +464,8 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 },
+
+
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Cüzdan"),
@@ -347,9 +479,9 @@ namespace ShoppingCart.UI.Models
                     ProductTranslations = new List<ProductTranslation>
                     {
                         new ProductTranslation
-                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Deri Cüzdan",ProductDescription="Özel Tasarım Erkek Cüzdan"},
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Marilyn Monroe Deri Cüzdan",ProductDescription="Marilyn Monroe Deri Cüzdan"},
                         new ProductTranslation
-                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Leather Wallet",ProductDescription="Special Design Men Wallet"}
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Marilyn Monroe Leather Wallet",ProductDescription="Marilyn Monroe Leather Wallet"}
                                             
                     },
                     ProductImages = new List<ProductImage>
@@ -357,12 +489,20 @@ namespace ShoppingCart.UI.Models
                         new ProductImage
                         {
                             DisplayOrder=1,
-                            ProductImagePath = "path1"
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan1.jpg"
                         },
                         new ProductImage
                         {
                             DisplayOrder=2,
-                            ProductImagePath = "path2"
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan2.jpg"
+                        },
+                        new ProductImage
+                        {
+                            DisplayOrder=2,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan3.jpg"
                         }
                     },
                     ProductAttributes = new List<ProductAttribute>
@@ -442,12 +582,122 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 }
+
+
+
+                ,
+                new Product
+                {
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Ceket"),
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<Product>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Heidi Kaban",ProductDescription="Heidi Kaban"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Heidi Coat",ProductDescription="Heidi Coat"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/hedicoat1.jpg"
+                        }
+                    },
+                    ProductAttributes = new List<ProductAttribute>
+                        {
+                            new ProductAttribute
+                            {
+                                Enabled=true,
+                                ProductAttributeTranslations= new List<ProductAttributeTranslation>
+                                                                {
+                                                                    new ProductAttributeTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductAttributeDescription ="",
+                                                                        ProductAttributeName ="Renk"
+                                                                    },
+                                                                    new ProductAttributeTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductAttributeDescription ="",
+                                                                        ProductAttributeName ="Color",
+                                                                    }
+                                                                },
+                                ProductAttributeValues = new List<ProductAttributeValue>
+                                                                {
+                                                                     new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Siyah"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductAttributeValue
+                                                                     {
+                                                                        Enabled = true,
+                                                                        ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
+                                                                            {
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductAttributeValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductAttributeValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductAttributeValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                }
+
+
             };
             #endregion
 
             var product1 = products.Single(x => x.ProductTranslations.Single(y => y.Language.LanguageCode == "tr").ProductName == "Deri Erkek Saat");
             var product2 = products.Single(x => x.ProductTranslations.Single(y => y.Language.LanguageCode == "tr").ProductName == "Deri Kadın Saat");
-            var product3 = products.Single(x => x.ProductTranslations.Single(y => y.Language.LanguageCode == "tr").ProductName == "Deri Cüzdan");
+            var product3 = products.Single(x => x.ProductTranslations.Single(y => y.Language.LanguageCode == "tr").ProductName == "Marilyn Monroe Deri Cüzdan");
             product1.RelatedProducts.Add(product2);
             product2.RelatedProducts.Add(product1);
             product2.RelatedProducts.Add(product3);

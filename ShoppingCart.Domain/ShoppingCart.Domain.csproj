@@ -91,12 +91,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IProductImageRepository.cs" />
     <Compile Include="Concrete\EFCategoryRepository.cs" />
     <Compile Include="Abstract\ICartRepository.cs" />
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\EFCartRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\EFProductImageRepository.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Concrete\IdentityModels.cs" />
     <Compile Include="Entities\Address.cs" />

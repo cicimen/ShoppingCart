@@ -14,6 +14,31 @@ namespace ShoppingCart.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                null,
+                "",
+                defaults: new { controller = "Home", action = "Index", categoryLinkText = (string)null, page = 1 }
+            );
+
+            routes.MapRoute(null,
+            "{page}",
+            new { controller = "Home", action = "Index", categoryLinkText = (string)null },
+            new { page = @"\d+" }
+            );
+
+            routes.MapRoute(null,
+            "{categoryLinkText}",
+            new { controller = "Home", action = "Index", page = 1 }
+            );
+
+            routes.MapRoute(null,
+            "{categoryLinkText}/{page}",
+            new { controller = "Home", action = "Index" },
+            new { page = @"\d+" }
+            );
+
+
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -27,6 +27,7 @@ namespace ShoppingCart.Domain.Concrete
                 {
                     dbEntry.Ancestors = category.Ancestors;
                     dbEntry.CategoryTranslations = category.CategoryTranslations;
+                    dbEntry.CategoryURLText = category.CategoryURLText;
                     dbEntry.Children = category.Children;
                     dbEntry.DateCreated = category.DateCreated;
                     dbEntry.DateModified = category.DateModified;

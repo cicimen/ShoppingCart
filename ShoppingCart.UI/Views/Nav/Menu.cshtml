@@ -6,21 +6,57 @@
         {
             if (Context.Session["Language"]== null || Context.Session["Language"] as string == "tr"  )
             { 
-                <li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+                @*<li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>*@
+                <li class="list-group-item-heading nav-header disabled">
+                @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName,
+                new {
+                controller ="Home",
+                action ="Index",
+                categoryLinkText=category.CategoryURLText,
+                page=1
+                })
+                </li>
             }
             else
-            { 
-                <li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>
+            {
+                @*<li class="list-group-item-heading nav-header disabled"><a href="#">@category.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>*@
+                <li class="list-group-item-heading nav-header disabled">
+                @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName,
+                new {
+                controller ="Home",
+                action ="Index",
+                categoryLinkText=category.CategoryURLText,
+                page=1
+                })
+                </li>
             }
             foreach (var childCategory in category.Children)
             {
                 if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
                 {
-                    <li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>
+                    @*<li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName</a></li>*@
+                    <li>
+                    @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "tr").CategoryName,
+                    new {
+                    controller ="Home",
+                    action ="Index",
+                    categoryLinkText = childCategory.CategoryURLText,
+                    page=1
+                    })
+                    </li>
                 }
                 else
                 { 
-                    <li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>
+                    @*<li><a href="#">@childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName</a></li>*@
+                    <li>
+                    @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == "en").CategoryName,
+                    new {
+                    controller ="Home",
+                    action ="Index",
+                    categoryLinkText = childCategory.CategoryURLText,
+                    page=1
+                    })
+                    </li>
                 }
             }
         }

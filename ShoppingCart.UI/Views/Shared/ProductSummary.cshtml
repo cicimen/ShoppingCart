@@ -1,0 +1,40 @@
+﻿@model ShoppingCart.Domain.Entities.Product
+
+<div class="item">
+
+    @if (Model.ProductImages.Count >0)
+    {
+        <div style="float:left;margin-right:20px">
+            <img width="75" height="75" src="@Url.Action("GetImage", "Image", 
+            new {productImageID= Model.ProductImages.Single(x=> x.DisplayOrder==1).ProductImageID })" />
+        </div>
+    }
+    
+    @if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+    {
+        <h3>
+            @Model.ProductTranslations.Single(x => x.Language.LanguageCode == "tr").ProductName
+        </h3>
+         @Model.ProductTranslations.Single(x => x.Language.LanguageCode == "tr").ProductDescription
+    }
+    else
+    {
+        <h3>
+            @Model.ProductTranslations.Single(x => x.Language.LanguageCode == "en").ProductDescription
+        </h3>
+    }
+
+    
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        @Html.HiddenFor(x => x.ProductID)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" value="+ Add to cart" />
+    }
+
+    @*renders numerical values as currency according to the culture settings that are in effect on your server*@
+    @*You can change the culture setting for your server by adding a sectionto the <system.web> node in the Web.config file like this:
+        <globalization culture="en-GB" uiCulture="en-GB" />.*@
+    <h4>@Model.DiscountedPrice.ToString("c")</h4>
+</div>
