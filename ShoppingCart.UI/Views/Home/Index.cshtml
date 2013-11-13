@@ -24,14 +24,26 @@
 
     </div>
 }*@
+<div class="row">
+    @foreach (var p in Model.Products)
+    {
+        Html.RenderPartial("ProductSummary", p);
+        if (Model.Products.Count() % 3 ==0)
+        {
+            <div class="clearfix visible-md visible-lg"></div>
+        }
+    }
+    @for (int i = 0; i < Model.Products.Count() % 3; i++ )
+    {
+        <div class="col-md-4 col-lg-4">
+            </div>
+    }
 
-@foreach (var p in Model.Products)
-{
-    Html.RenderPartial("ProductSummary", p);
-}
+
+</div>
 
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x, categoryLinkText = Model.CurrentCategory }))
 </div>
 
 @*<div class="row">

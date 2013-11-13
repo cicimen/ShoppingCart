@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 20px;
 }
 
@@ -85,4 +85,26 @@ a.flagus
 body
 {
     font-family: Trebuchet MS, sans-serif;
+}
+
+img.center 
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+div.col-md-4 
+{
+    margin-bottom: 20px;
+}
+
+.navbar {
+    color: #000000;
+    height:10px;
+}
+
+.navbar-inverse 
+{
+background-color: #dcd7d7;
+border-color: #dcd7d7;
 }

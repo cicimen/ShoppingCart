@@ -16,26 +16,21 @@ namespace ShoppingCart.WebUI.Controllers
     public class HomeController : Controller
     {
 
-        private IProductRepository repository;
+        private IProductRepository productRepository;
 
         //TODO: Dışarıdan parametre olarak al bunu
-        public int PageSize = 10;
+        public int PageSize = 5;
         public HomeController(IProductRepository productRepository)
         {
-            this.repository = productRepository;
+            this.productRepository = productRepository;
         }
 
         public ActionResult Index(string categoryLinkText , int page =1)
-        {
-            //ShoppingCart.Domain.Concrete.EFDbContext context = new ShoppingCart.Domain.Concrete.EFDbContext();
-            //var category = context.Categories.Include(x => x.Offspring.Select(e => e.Offspring)).SingleOrDefault(y=> y.CategoryID ==5);
-
-            //var establishments = context.Categories.Where(x => x.Ancestors.Any(y => y.Separation > 3));
-
+        {          
             ProductsListViewModel model = new ProductsListViewModel
             {
-                Products = repository.Products
-                .Where(x => categoryLinkText == null || x.Category.CategoryURLText == categoryLinkText)
+                Products = productRepository.Products
+                .Where(x => categoryLinkText == null || (x.Category.CategoryURLText == categoryLinkText ||x.Category.Parent.CategoryURLText == categoryLinkText ))
                 .OrderBy(p => p.DiscountedPrice)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
@@ -43,7 +38,8 @@ namespace ShoppingCart.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = categoryLinkText == null ? repository.Products.Count() : repository.Products.Where(e => e.Category.CategoryURLText == categoryLinkText).Count()
+                    TotalItems = categoryLinkText == null ? productRepository.Products.Count() : 
+                        productRepository.Products.Where(e => (e.Category.CategoryURLText == categoryLinkText ||e.Category.Parent.CategoryURLText ==categoryLinkText )).Count()
                 },
                 CurrentCategory = categoryLinkText
             };

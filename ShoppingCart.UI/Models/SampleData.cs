@@ -117,6 +117,7 @@ namespace ShoppingCart.UI.Models
             #region Product
             var products = new List<Product>
             {
+            #region 1
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="T-Shirt"),
@@ -227,6 +228,9 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 },
+                #endregion
+
+            #region 2
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Erkek Saat"),
@@ -337,6 +341,9 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 },
+                #endregion 
+
+            #region 3
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Saat"),
@@ -464,8 +471,9 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 },
+                #endregion
 
-
+            #region 4
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Cüzdan"),
@@ -583,8 +591,9 @@ namespace ShoppingCart.UI.Models
                         }
                 }
 
+                #endregion
 
-
+            #region 5
                 ,
                 new Product
                 {
@@ -690,6 +699,7 @@ namespace ShoppingCart.UI.Models
                             }
                         }
                 }
+            #endregion
 
 
             };

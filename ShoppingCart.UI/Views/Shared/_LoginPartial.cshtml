@@ -7,7 +7,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li class="language">
-            @if (Context.Session["Language"]== null || Context.Session["Language"] as string == "tr"  )
+            @if (@Html.GetLanguageCode() == "tr"  )
             {               
                 <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "en" })" class="flagus"></a>
             }
@@ -28,7 +28,7 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+            @if (@Html.GetLanguageCode() == "tr")
             {
                 <a href="@Url.Action("ChangeLanguage", "Nav", new { ReturnURL = Request.RawUrl, language = "en" })" class="flagus"></a>
             }
@@ -38,7 +38,7 @@ else
             }
         </li>
 
-        @if (Context.Session["Language"] == null || Context.Session["Language"] as string == "tr")
+        @if (@Html.GetLanguageCode() == "tr")
         {
             <li>@Html.ActionLink("Üye Ol", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
             <li>@Html.ActionLink("Üye Girişi", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>

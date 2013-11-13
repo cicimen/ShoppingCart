@@ -2,6 +2,7 @@
 using System.Text;
 using System.Web.Mvc;
 using ShoppingCart.UI.Models;
+using System.Web;
 
 namespace ShoppingCart.UI.HtmlHelpers
 {
@@ -21,6 +22,19 @@ namespace ShoppingCart.UI.HtmlHelpers
                 result.Append(tag.ToString());
             }
             return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static string GetLanguageCode(this HtmlHelper html)
+        {
+            HttpContext context = HttpContext.Current;
+            if (context.Session["Language"] == null || context.Session["Language"] as string == "tr")
+            {
+                return "tr";
+            }
+            else 
+            {
+                return "en";
+            }
         }
     }
 }
