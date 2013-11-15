@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using ShoppingCart.Domain.Entities;
+using System;
 
 namespace ShoppingCart.Domain.Concrete
 {
@@ -8,6 +9,8 @@ namespace ShoppingCart.Domain.Concrete
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string HomeTown { get; set; }
+        public DateTime? BirthDate { get; set; }
         public Address Address { get; set; }
 
     }

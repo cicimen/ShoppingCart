@@ -14,10 +14,10 @@ namespace ShoppingCart.Domain.Concrete
     {
         private EFDbContext context = new EFDbContext();
 
-        //public IQueryable<Cart> Carts
-        //{
-        //    get { return context.Carts; }
-        //}
+        public IQueryable<Cart> Carts
+        {
+            get { return context.Carts; }
+        }
         string ShoppingCartID { get; set; }
 
         public const string CartSessionKey = "CartID";

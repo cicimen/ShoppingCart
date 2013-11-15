@@ -108,3 +108,32 @@ div.col-md-4
 background-color: #dcd7d7;
 border-color: #dcd7d7;
 }
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.mason {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 2em;
+ -webkit-column-gap: 2em; 
+  
+}
+
+.product.list-group-item {
+ display: inline-block;
+ margin:  0.55rem;
+ /*padding:  1rem;*/
+ width:  100%; 
+ border:none;
+}
+
+.panel-primary 
+{
+     position:fixed;
+    top:10em;
+}
+
+
+
+

@@ -19,6 +19,12 @@ namespace ShoppingCart.UI
                 defaults: new { controller = "Home", action = "Index", categoryLinkText = (string)null, page = 1 }
             );
 
+
+            routes.MapRoute(null,
+           "Cart",
+           new { controller = "Cart", action = "Index" }
+           );
+
             routes.MapRoute(null,
             "{page}",
             new { controller = "Home", action = "Index", categoryLinkText = (string)null },
@@ -36,6 +42,10 @@ namespace ShoppingCart.UI
             new { page = @"\d+" }
             );
 
+            routes.MapRoute(null,
+           "Product/{productLinkText}",
+           new { controller = "Product", action = "Index" }
+           );
 
 
             routes.MapRoute(

@@ -121,6 +121,7 @@ namespace ShoppingCart.UI.Models
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="T-Shirt"),
+                    ProductURLText="good-bad-ugly-t-shirt",
                     DateCreated=DateTime.Now,
                     DateModified = DateTime.Now,
                     DiscountedPrice = 40,
@@ -234,6 +235,7 @@ namespace ShoppingCart.UI.Models
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Erkek Saat"),
+                    ProductURLText="deri-erkek-saat",
                     DateCreated=DateTime.Now,
                     DateModified = DateTime.Now,
                     DiscountedPrice = 40,
@@ -347,6 +349,7 @@ namespace ShoppingCart.UI.Models
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Saat"),
+                    ProductURLText="deri-kadin-saat",
                     DateCreated=DateTime.Now,
                     DateModified = DateTime.Now,
                     DiscountedPrice = 60,
@@ -477,6 +480,7 @@ namespace ShoppingCart.UI.Models
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Cüzdan"),
+                    ProductURLText="marilyn-monroe_deri-cuzdan",
                     DateCreated=DateTime.Now,
                     DateModified = DateTime.Now,
                     DiscountedPrice = 40,
@@ -598,6 +602,7 @@ namespace ShoppingCart.UI.Models
                 new Product
                 {
                     Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Ceket"),
+                    ProductURLText="heidi-kaban",
                     DateCreated=DateTime.Now,
                     DateModified = DateTime.Now,
                     DiscountedPrice = 40,

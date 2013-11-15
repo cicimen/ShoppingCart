@@ -23,6 +23,9 @@ namespace ShoppingCart.UI
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/masonry").Include(
+                      "~/Scripts/masonry.pkgd.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

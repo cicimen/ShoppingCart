@@ -1,0 +1,11 @@
+﻿@model ShoppingCart.Domain.Entities.Product
+@{
+    ViewBag.Title = "Index";
+}
+
+@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName
+<hr />
+@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductDescription
+<hr />
+@Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = Model.ProductID }, "")
+

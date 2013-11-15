@@ -267,7 +267,14 @@ namespace deneme2013.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() 
+                { 
+                    UserName = model.UserName,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    BirthDate = model.BirthDate,
+                    HomeTown = model.HomeTown
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -406,5 +413,12 @@ namespace deneme2013.Controllers
             }
         }
         #endregion
+
+        private void MigrateShoppingCart(string userName)
+        {
+            var cart = EFCartRepository.GetCart(this.HttpContext);
+            cart.MigrateCart(userName);
+            Session[EFCartRepository.CartSessionKey] = userName;
+        }
     }
 }
