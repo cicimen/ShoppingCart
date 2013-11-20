@@ -6,6 +6,13 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+
+        @*<li>
+            <a href="/Account/Manage" title="Manage">
+                <img class="img-responsive profilePicture" width="24" height="24" src="~/Content/ProfileImages/@(User.Identity.GetUserId()).jpeg" />
+            </a>
+        </li>*@
+
         <li class="language">
             @if (@Html.GetLanguageCode() == "tr"  )
             {               

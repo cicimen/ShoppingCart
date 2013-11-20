@@ -14,6 +14,93 @@ namespace ShoppingCart.UI.Models
         protected override void Seed(EFDbContext context)
         {
 
+            #region City
+            var cities = new List<City>
+            {
+                new City{CityCode="01",CityName="Adana"},
+                new City{CityCode="02",CityName="Adıyaman"},
+                new City{CityCode="03",CityName="Afyonkarahisar"},
+                new City{CityCode="04",CityName="Ağrı"},
+                new City{CityCode="05",CityName="Amasya"},
+                new City{CityCode="06",CityName="Ankara"},
+                new City{CityCode="07",CityName="Antalya"},
+                new City{CityCode="08",CityName="Artvin"},
+                new City{CityCode="09",CityName="Aydın"},
+                new City{CityCode="10",CityName="Balıkesir"},
+                new City{CityCode="11",CityName="Bilecik"},
+                new City{CityCode="12",CityName="Bingöl"},
+                new City{CityCode="13",CityName="Bitlis"},
+                new City{CityCode="14",CityName="Bolu"},
+                new City{CityCode="15",CityName="Burdur"},
+                new City{CityCode="16",CityName="Bursa"},
+                new City{CityCode="17",CityName="Çanakkale"},
+                new City{CityCode="18",CityName="Çankırı"},
+                new City{CityCode="19",CityName="Çorum"},
+                new City{CityCode="20",CityName="Denizli"},
+                new City{CityCode="21",CityName="Diyarbakır"},
+                new City{CityCode="22",CityName="Edirne"},
+                new City{CityCode="23",CityName="Elazığ"},
+                new City{CityCode="24",CityName="Erzincan"},
+                new City{CityCode="25",CityName="Erzurum"},
+                new City{CityCode="26",CityName="Eskişehir"},
+                new City{CityCode="27",CityName="Gaziantep"},
+                new City{CityCode="28",CityName="Giresun"},
+                new City{CityCode="29",CityName="Gümüşhane"},
+                new City{CityCode="30",CityName="Hakkari"},
+                new City{CityCode="31",CityName="Hatay"},
+                new City{CityCode="32",CityName="Isparta"},
+                new City{CityCode="33",CityName="Mersin"},
+                new City{CityCode="34",CityName="İstanbul"},
+                new City{CityCode="35",CityName="İzmir"},
+                new City{CityCode="36",CityName="Kars"},
+                new City{CityCode="37",CityName="Kastamonu"},
+                new City{CityCode="38",CityName="Kayseri"},
+                new City{CityCode="39",CityName="Kırklareli"},
+                new City{CityCode="40",CityName="Kırşehir"},
+                new City{CityCode="41",CityName="Kocaeli"},
+                new City{CityCode="42",CityName="Konya"},
+                new City{CityCode="43",CityName="Kütahya"},
+                new City{CityCode="44",CityName="Malatya"},
+                new City{CityCode="45",CityName="Manisa"},
+                new City{CityCode="46",CityName="Kahramanmaraş"},
+                new City{CityCode="47",CityName="Mardin"},
+                new City{CityCode="48",CityName="Muğla"},
+                new City{CityCode="49",CityName="Muş"},
+                new City{CityCode="50",CityName="Nevşehir"},
+                new City{CityCode="51",CityName="Niğde"},
+                new City{CityCode="52",CityName="Ordu"},
+                new City{CityCode="53",CityName="Rize"},
+                new City{CityCode="54",CityName="Sakarya"},
+                new City{CityCode="55",CityName="Samsun"},
+                new City{CityCode="56",CityName="Siirt"},
+                new City{CityCode="57",CityName="Sinop"},
+                new City{CityCode="58",CityName="Sivas"},
+                new City{CityCode="59",CityName="Tekirdağ"},
+                new City{CityCode="60",CityName="Tokat"},
+                new City{CityCode="61",CityName="Trabzon"},
+                new City{CityCode="62",CityName="Tunceli"},
+                new City{CityCode="63",CityName="Şanlıurfa"},
+                new City{CityCode="64",CityName="Uşak"},
+                new City{CityCode="65",CityName="Van"},
+                new City{CityCode="66",CityName="Yozgat"},
+                new City{CityCode="67",CityName="Zonguldak"},
+                new City{CityCode="68",CityName="Aksaray"},
+                new City{CityCode="69",CityName="Bayburt"},
+                new City{CityCode="70",CityName="Karaman"},
+                new City{CityCode="71",CityName="Kırıkkale"},
+                new City{CityCode="72",CityName="Batman"},
+                new City{CityCode="73",CityName="Şırnak"},
+                new City{CityCode="74",CityName="Bartın"},
+                new City{CityCode="75",CityName="Ardahan"},
+                new City{CityCode="76",CityName="Iğdır"},
+                new City{CityCode="77",CityName="Yalova"},
+                new City{CityCode="78",CityName="Karabük"},
+                new City{CityCode="79",CityName="Kilis"},
+                new City{CityCode="80",CityName="Osmaniye"},
+                new City{CityCode="81",CityName="Düzce"}
+            };
+            #endregion
+
             #region Language
             var languages = new List<Language>
             {
@@ -67,6 +154,9 @@ namespace ShoppingCart.UI.Models
                 }
             };
 
+
+
+
             categories.Add(new Category
             {
                 DateCreated = DateTime.Now,
@@ -74,7 +164,7 @@ namespace ShoppingCart.UI.Models
                 CategoryURLText="erkek-saat",
                 Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat"),
                 Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
-                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat"),Separation=1 }},
                 CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
                                                 {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Erkek Saat",CategoryDescription="Özel Tasarım Erkek Saat"},
@@ -83,12 +173,13 @@ namespace ShoppingCart.UI.Models
                                             }
             });
 
+
             categories.Add(new Category{DateCreated = DateTime.Now,
                                         DateModified = DateTime.Now,
                                         CategoryURLText = "kadin-saat",
                                         Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Saat"),
                                         Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
-                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat") }},
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Saat"),Separation=1  }},
                                         CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
                                                 {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Kadın Saat",CategoryDescription="Özel Tasarım Kadın Saat"},
@@ -97,6 +188,7 @@ namespace ShoppingCart.UI.Models
                                             }
                                          });
 
+
             categories.Add(new Category
             {
                 DateCreated = DateTime.Now,
@@ -104,7 +196,7 @@ namespace ShoppingCart.UI.Models
                 CategoryURLText = "kadin-ceket",
                 Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Ceket"),
                 Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
-                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Ceket") }},
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Ceket"),Separation=1  }},
                 CategoryTranslations = new List<CategoryTranslation>
                                             {new CategoryTranslation
                                                 {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Kadın Ceket",CategoryDescription="Özel Tasarım Kadın Ceket"},
@@ -112,6 +204,26 @@ namespace ShoppingCart.UI.Models
                                                 {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Women Coat",CategoryDescription="Special Design Women Coat"}
                                             }
             });
+
+            categories.Add(new Category
+            {
+                DateCreated = DateTime.Now,
+                DateModified = DateTime.Now,
+                CategoryURLText = "yazlik-kadin-ceket",
+                Parent = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Kadın Ceket"),
+                Ancestors = new List<CategoryNode>{ new CategoryNode {Ancestor =
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Ceket"),Separation=2  },
+                                                    new CategoryNode {Ancestor =
+                                                    categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode=="tr").CategoryName== "Kadın Ceket"),Separation=1  }
+                },
+                CategoryTranslations = new List<CategoryTranslation>
+                                            {new CategoryTranslation
+                                                {Language = languages.Single(x=>x.LanguageCode =="tr"),CategoryName ="Yazlık Kadın Ceket",CategoryDescription="Özel Tasarım Yazlık Kadın Ceket"},
+                                            new CategoryTranslation
+                                                {Language = languages.Single(x=>x.LanguageCode =="en"),CategoryName ="Summer Women Coat",CategoryDescription="Special Design Summer Women Coat"}
+                                            }
+            });
+
             #endregion
 
             #region Product
@@ -176,6 +288,7 @@ namespace ShoppingCart.UI.Models
                                                                 {
                                                                      new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 3,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -193,6 +306,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 4,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -210,6 +324,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 2,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -290,6 +405,7 @@ namespace ShoppingCart.UI.Models
                                                                 {
                                                                      new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 4,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -307,6 +423,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 5,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -324,6 +441,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 12,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -360,7 +478,7 @@ namespace ShoppingCart.UI.Models
                     ProductTranslations = new List<ProductTranslation>
                     {
                         new ProductTranslation
-                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Deri Kadın Saat",ProductDescription="Özel Tasarım Erkek Saat Deri"},
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Deri Kadın Saat",ProductDescription="Özel Tasarım Kadın Saat Deri"},
                         new ProductTranslation
                             {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Leather Women Watch",ProductDescription="Special Design Women Watch Leather "}
                                             
@@ -404,6 +522,7 @@ namespace ShoppingCart.UI.Models
                                                                 {
                                                                      new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 4,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -421,6 +540,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 8,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -438,6 +558,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 9,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -455,6 +576,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 11,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -541,6 +663,7 @@ namespace ShoppingCart.UI.Models
                                                                 {
                                                                      new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 4,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -558,6 +681,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 6,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -575,6 +699,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 15,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -651,6 +776,7 @@ namespace ShoppingCart.UI.Models
                                                                 {
                                                                      new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 6,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -668,6 +794,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 4,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -685,6 +812,7 @@ namespace ShoppingCart.UI.Models
                                                                      },
                                                                       new ProductAttributeValue
                                                                      {
+                                                                        Inventory = 12,
                                                                         Enabled = true,
                                                                         ProductAttributeValueTranslations = new List<ProductAttributeValueTranslation>
                                                                             {
@@ -706,6 +834,39 @@ namespace ShoppingCart.UI.Models
                 }
             #endregion
 
+            #region 6
+            ,
+                new Product
+                {
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName == "Yazlık Kadın Ceket"),
+                    ProductURLText="modagram-fleo-cicekli-bomber-ceket",
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<Product>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Modagram Fleo Çiçekli Bomber Ceket",ProductDescription="Modagram Fleo Çiçekli Bomber Ceket"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Modagram Fleo Bomber Coat",ProductDescription="Modagram Fleo Bomber Coat"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/modagram-fleo-cicekli-bomber-ceket.jpg"
+                        }
+                    }
+                }
+
+            #endregion
 
             };
             #endregion
@@ -718,6 +879,10 @@ namespace ShoppingCart.UI.Models
             product2.RelatedProducts.Add(product3);
             product3.RelatedProducts.Add(product1);
 
+            foreach (var item in cities)
+            {
+                context.Cities.Add(item);
+            }
 
             foreach (var item in products)
             {

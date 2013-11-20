@@ -71,10 +71,10 @@ namespace ShoppingCart.Domain.Concrete
             context.SaveChanges();
         }
 
-        public void AddToCart(Product product, int itemCount)
+        public void AddToCart(Product product, int itemCount,string attributesXml)
         {
             // Get the matching cart and album instances
-            var cartItem = context.Carts.SingleOrDefault(c => c.CartId == ShoppingCartID && c.ProductId == product.ProductID);
+            var cartItem = context.Carts.SingleOrDefault(c => c.CartId == ShoppingCartID && c.ProductId == product.ProductID &&c.AttributesXml == attributesXml);
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists
@@ -83,7 +83,8 @@ namespace ShoppingCart.Domain.Concrete
                     ProductId = product.ProductID,
                     CartId = ShoppingCartID,
                     Count = itemCount,
-                    DateCreated = DateTime.Now
+                    DateCreated = DateTime.Now,
+                    AttributesXml =attributesXml
                 };
                 context.Carts.Add(cartItem);
             }
@@ -167,7 +168,8 @@ namespace ShoppingCart.Domain.Concrete
                     ProductId = item.ProductId,
                     OrderId = order.OrderId,
                     UnitPrice = item.Product.DiscountedPrice,
-                    Quantity = item.Count
+                    Quantity = item.Count,
+                    AttributesXml =item.AttributesXml
                 };
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count * item.Product.DiscountedPrice);

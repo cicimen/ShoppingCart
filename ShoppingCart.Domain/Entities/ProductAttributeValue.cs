@@ -14,6 +14,8 @@ namespace ShoppingCart.Domain.Entities
 
         public bool Enabled { get; set; }
 
+        public int Inventory { get; set; }
+
         public virtual List<ProductAttributeValueTranslation> ProductAttributeValueTranslations { get; set; }
     }
 }

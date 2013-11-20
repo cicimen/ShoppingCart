@@ -17,13 +17,26 @@
             {
                 <li>
                 @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
-                new {
-                controller ="Home",
-                action ="Index",
-                categoryLinkText = childCategory.CategoryURLText,
-                page=1
+                new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    categoryLinkText = childCategory.CategoryURLText,
+                    page = 1
                 })
-                </li>             
+                </li>  
+                foreach (var grandChildCategory in childCategory.Children)
+                {
+                    <li>
+                    @Html.RouteLink(grandChildCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+                    new {
+                    controller ="Home",
+                    action ="Index",
+                    categoryLinkText = grandChildCategory.CategoryURLText,
+                    page=1
+                    })
+                    </li> 
+                }           
             }
         }
     </ul>

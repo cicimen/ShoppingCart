@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using ShoppingCart.Domain.Entities;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace ShoppingCart.Domain.Concrete
 {
@@ -11,16 +13,18 @@ namespace ShoppingCart.Domain.Concrete
         public string Surname { get; set; }
         public string HomeTown { get; set; }
         public DateTime? BirthDate { get; set; }
-        public Address Address { get; set; }
+        //public virtual ICollection<Address> Addresses { get; set; }
 
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public DbSet<Address> Addresses { get; set; }
         public ApplicationDbContext()
             //: base("DefaultConnection")
             : base("EFDbContext")
         {
+            
         }
     }
 }

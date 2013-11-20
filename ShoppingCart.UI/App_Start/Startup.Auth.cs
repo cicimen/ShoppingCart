@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+
+using Microsoft.Owin.Security.Twitter;
+using System.Threading.Tasks;
 
 namespace ShoppingCart.UI
 {
     public partial class Startup
     {
+        public const string TwitterConsumerKey = "xgiR26tNW8ukf0xbA";
+        public const string TwitterConsumerSecret = "eOTtYSwGWyeaabyRyoYbPOTqNz0DOnG8hq0iUBsI";
+
+        public const string FacebookAppId = "467450233371742";
+        public const string FacebookAppSecret = "424ccbf5608cef1a68fef8d3fe564de4";
+        const string XmlSchemaString = "http://www.w3.org/2001/XMLSchema#string";
+
+        public const string TwitterAccessTokenClaimType = "urn:tokens:twitter:accesstoken";
+        public const string TwitterAccessTokenSecretClaimType = "urn:tokens:twitter:accesstokensecret";
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -24,15 +38,61 @@ namespace ShoppingCart.UI
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "467450233371742",
-               appSecret: "424ccbf5608cef1a68fef8d3fe564de4");
+            var facebookOptions = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationOptions()
+            {
+                AppId = FacebookAppId,
+                AppSecret = FacebookAppSecret,
+                Provider = new Microsoft.Owin.Security.Facebook.FacebookAuthenticationProvider()
+                {
+                    OnAuthenticated = (context) =>
+                    {
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("urn:facebook:access_token", context.AccessToken, XmlSchemaString, "Facebook"));
+                        foreach (var x in context.User)
+                        {
+                            var claimType = string.Format("urn:facebook:{0}", x.Key);
+                            string claimValue = x.Value.ToString();
+                            if (!context.Identity.HasClaim(claimType, claimValue))
+                                context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Facebook"));
+                        }
+                        return Task.FromResult(0);
+                    }
+                }
 
-            app.UseGoogleAuthentication();
+            };
+            facebookOptions.Scope.Add("email");
+            facebookOptions.Scope.Add("user_birthday");
+            //facebookOptions.Scope.Add("friends_about_me");
+            app.UseFacebookAuthentication(facebookOptions);
+
+
+
+
+
+
+
+            //app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            //{
+            //    ConsumerKey = TwitterConsumerKey,
+            //    ConsumerSecret = TwitterConsumerSecret,
+            //    Provider = new TwitterAuthenticationProvider()
+            //    {
+            //        OnAuthenticated = async context =>
+            //        {
+            //            context.Identity.AddClaim(new Claim(TwitterAccessTokenClaimType, context.AccessToken));
+            //            context.Identity.AddClaim(new Claim(TwitterAccessTokenSecretClaimType, context.AccessTokenSecret));
+            //        }
+            //    }
+            //});
+
+
+
+
+            //app.UseFacebookAuthentication(
+            //   appId: "467450233371742",
+            //   appSecret: "424ccbf5608cef1a68fef8d3fe564de4");
+
+            //app.UseGoogleAuthentication();
         }
     }
 }

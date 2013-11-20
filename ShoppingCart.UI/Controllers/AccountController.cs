@@ -11,8 +11,13 @@ using Microsoft.Owin.Security;
 
 using ShoppingCart.UI.Models;
 using ShoppingCart.Domain.Concrete;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using TweetSharp;
 
-namespace deneme2013.Controllers
+
+namespace ShoppingCart.UI.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -281,6 +286,8 @@ namespace deneme2013.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        await StoreAuthTokenClaims(user);
+
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
@@ -291,6 +298,85 @@ namespace deneme2013.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
+
+
+        private async Task StoreAuthTokenClaims(ApplicationUser user)
+        {
+            // Get the claims identity
+            ClaimsIdentity claimsIdentity =
+                await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+
+            if (claimsIdentity != null)
+            {
+                // Retrieve the existing claims
+                var currentClaims = await UserManager.GetClaimsAsync(user.Id);
+
+                // Get the list of access token related claims from the identity
+                var tokenClaims = claimsIdentity.Claims
+                    //.Where(c => c.Type.StartsWith("urn:tokens:"));
+                    .Where(c => c.Type.StartsWith("urn:facebook:"));
+
+                // Save the access token related claims
+                foreach (var tokenClaim in tokenClaims)
+                {
+                    if (!currentClaims.Contains(tokenClaim))
+                    {
+                        await UserManager.AddClaimAsync(user.Id, tokenClaim);
+                    }
+                }
+
+                // Download the twitter profile image
+                //await DownloadTwitterProfileImage(tokenClaims, user.Id);
+            }
+        }
+
+        private async Task DownloadTwitterProfileImage(IEnumerable<Claim> claims, string userId)
+        {
+            // Retrieve the twitter access token and claim
+            var accessTokenClaim = claims.FirstOrDefault(x => x.Type == Startup.TwitterAccessTokenClaimType);
+            var accessTokenSecretClaim = claims.FirstOrDefault(x => x.Type == Startup.TwitterAccessTokenSecretClaimType);
+
+            if (accessTokenClaim != null && accessTokenSecretClaim != null)
+            {
+                // Initialize the Twitter client
+                var service = new TwitterService(
+                    Startup.TwitterConsumerKey,
+                    Startup.TwitterConsumerSecret,
+                    accessTokenClaim.Value,
+                    accessTokenSecretClaim.Value
+                    );
+
+                var profile = service.GetUserProfile(new GetUserProfileOptions());
+                if (profile != null && !String.IsNullOrWhiteSpace(profile.ProfileImageUrlHttps))
+                {
+                    string filename = Server.MapPath(string.Format("~/Content/ProfileImages/{0}.jpeg", userId));
+
+                    await DownloadProfileImage(new Uri(profile.ProfileImageUrlHttps), filename);
+                }
+            }
+        }
+
+        private async Task DownloadProfileImage(Uri url, string filename)
+        {
+            try
+            {
+                var httpClient = new HttpClient();
+                HttpResponseMessage response = await httpClient.GetAsync(url);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    using (var fileStream = new FileStream(filename, FileMode.Create))
+                    {
+                        await response.Content.CopyToAsync(fileStream);
+
+                        fileStream.Close();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
 
         //
         // POST: /Account/LogOff
@@ -420,5 +506,19 @@ namespace deneme2013.Controllers
             cart.MigrateCart(userName);
             Session[EFCartRepository.CartSessionKey] = userName;
         }
+    
+    
+    
+        //To retrieve the claims from now on is as simple as adding the following lines of code:
+
+        //var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        //if (claimsIdentity != null)
+        //   var claims = claimsIdentity.Claims;
+    
+    
+    
+    
+    
+    
     }
 }

@@ -24,6 +24,14 @@
 
     </div>
 }*@
+
+@if (Model.CurrentCategory != null)
+{
+
+    @Html.GetCategoryBreadCrumb(Model.CurrentCategory, x => Url.Action("Index", new { page = 1, categoryLinkText = x }))
+}
+
+
 <div class="row mason">
     <div class="list-group">
     @foreach (var p in Model.Products)
