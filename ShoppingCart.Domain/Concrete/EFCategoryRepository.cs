@@ -7,7 +7,7 @@ namespace ShoppingCart.Domain.Concrete
 {
     public class EFCategoryRepository :ICategoryRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public IQueryable<Category> Categories
         {

@@ -59,7 +59,7 @@ namespace ShoppingCart.UI.Helpers
             {
                 languageCode = "en";
             }
-            EFDbContext dbContext = new EFDbContext();
+            ApplicationDbContext dbContext = new ApplicationDbContext();
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(xml);
             XmlNodeList productAttributes = xmlDocument.SelectNodes("/Attributes/ProductAttribute");
@@ -148,7 +148,7 @@ namespace ShoppingCart.UI.Helpers
 
         public static string CreateXmlForAttribute(int productAttributeValueID)
         {
-            EFDbContext context = new EFDbContext();
+            ApplicationDbContext context = new ApplicationDbContext();
             ProductAttributeValue productAttributeValue =  context.ProductAttributeValues.Where(x => x.ProductAttributeValueID == productAttributeValueID).FirstOrDefault();
             if (productAttributeValue == null)
             {

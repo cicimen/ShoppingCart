@@ -12,7 +12,7 @@ namespace ShoppingCart.Domain.Concrete
 {
     public class EFCartRepository //: ICartRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public IQueryable<Cart> Carts
         {

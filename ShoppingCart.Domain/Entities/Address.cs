@@ -19,8 +19,8 @@ namespace ShoppingCart.Domain.Entities
         public string PostalCode {get;set;}
         public City City { get; set; }
 
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        //public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 }

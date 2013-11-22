@@ -1,25 +1,28 @@
 ﻿using ShoppingCart.Domain.Entities;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ShoppingCart.Domain.Concrete
 {
-    public class EFDbContext : DbContext
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
-        public DbSet<ProductAttribute> ProductAttributes { get; set; }
-        public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
-        public DbSet<ProductAttributeTranslation> ProductAttributeTranslations { get; set; }
-        public DbSet<ProductAttributeValueTranslation> ProductAttributeValueTranslations { get; set; }
-        public DbSet<City> Cities{ get; set; }
+        public ApplicationDbContext()
+            //: base("DefaultConnection")
+            : base("EFDbContext")
+        {
+
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<IdentityUser>()
+            //    .ToTable("Users");
+            //modelBuilder.Entity<ApplicationUser>()
+            //    .ToTable("Users");
+
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new CategoryNodeConfiguration());
             modelBuilder.Entity<Product>()
@@ -31,7 +34,21 @@ namespace ShoppingCart.Domain.Concrete
                     m.MapRightKey("RelatedID");
                     m.ToTable("RelatedProduct");
                 });
+            
+            //modelBuilder.Entity<Address>().HasKey(e => new { e.AddressId });
         }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
+        public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public DbSet<ProductAttributeTranslation> ProductAttributeTranslations { get; set; }
+        public DbSet<ProductAttributeValueTranslation> ProductAttributeValueTranslations { get; set; }
+        public DbSet<City> Cities { get; set; }
 
     }
 
@@ -67,4 +84,15 @@ namespace ShoppingCart.Domain.Concrete
 
         }
     }
+
+
+    public class EFDbContext : DbContext
+    {
+       
+
+        
+
+    }
+
+
 }

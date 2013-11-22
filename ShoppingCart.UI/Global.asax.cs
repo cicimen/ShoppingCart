@@ -16,6 +16,7 @@ namespace ShoppingCart.UI
         {
             //bu satır veritabanını dolduruyor
             System.Data.Entity.Database.SetInitializer(new ShoppingCart.UI.Models.SampleData());
+            //System.Data.Entity.Database.SetInitializer(new ShoppingCart.UI.Models.SampleIdentityData());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

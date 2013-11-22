@@ -6,7 +6,7 @@ namespace ShoppingCart.Domain.Concrete
 {
     public class EFProductImageRepository : IProductImageRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public IQueryable<ProductImage> ProductImages
         {

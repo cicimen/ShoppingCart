@@ -278,7 +278,8 @@ namespace ShoppingCart.UI.Controllers
                     Name = model.Name,
                     Surname = model.Surname,
                     BirthDate = model.BirthDate,
-                    HomeTown = model.HomeTown
+                    HomeTown = model.HomeTown,
+                    //Addresses = model.Addresses
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -403,6 +404,8 @@ namespace ShoppingCart.UI.Controllers
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
