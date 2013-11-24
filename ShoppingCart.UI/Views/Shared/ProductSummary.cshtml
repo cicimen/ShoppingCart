@@ -15,9 +15,7 @@
             <h4>
                 @Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName
             </h4>
-            @Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductDescription
-
-
+            <h6>@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductDescription</h6>
             @*renders numerical values as currency according to the culture settings that are in effect on your server*@
             @*You can change the culture setting for your server by adding a sectionto the <system.web> node in the Web.config file like this:
             <globalization culture="en-GB" uiCulture="en-GB" />.*@

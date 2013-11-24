@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using ShoppingCart.Domain.Concrete;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace ShoppingCart.Domain.Entities
 {
     //TODO: Bu Bind be işe yarıyor?
     [Bind(Exclude = "OrderId")]
+    [Table("Order")]
     public class Order
     {
         [ScaffoldColumn(false)]
@@ -18,7 +21,8 @@ namespace ShoppingCart.Domain.Entities
 
         //TODO: User gelince değişecek
         [ScaffoldColumn(false)]
-        public string Username { get; set; }
+        public string ApplicationUserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Required(ErrorMessage = "First Name is required")]
         [DisplayName("First Name")]

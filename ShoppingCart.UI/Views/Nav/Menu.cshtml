@@ -5,18 +5,22 @@
         @foreach (var category in Model)
         {
             <li class="list-group-item-heading nav-header disabled">
-            @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
-            new {
-            controller ="Home",
-            action ="Index",
-            categoryLinkText=category.CategoryURLText,
-            page=1
+                <h3>
+                    @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+            new
+            {
+                controller = "Home",
+                action = "Index",
+                categoryLinkText = category.CategoryURLText,
+                page = 1
             })
+                </h3>
             </li>         
             foreach (var childCategory in category.Children)
             {
                 <li>
-                @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+                    <h4>
+                        @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
                 new
                 {
                     controller = "Home",
@@ -24,17 +28,21 @@
                     categoryLinkText = childCategory.CategoryURLText,
                     page = 1
                 })
+                    </h4>
                 </li>  
                 foreach (var grandChildCategory in childCategory.Children)
                 {
                     <li>
-                    @Html.RouteLink(grandChildCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
-                    new {
-                    controller ="Home",
-                    action ="Index",
-                    categoryLinkText = grandChildCategory.CategoryURLText,
-                    page=1
+                        <h5>
+                            @Html.RouteLink(grandChildCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+                    new
+                    {
+                        controller = "Home",
+                        action = "Index",
+                        categoryLinkText = grandChildCategory.CategoryURLText,
+                        page = 1
                     })
+                        </h5>
                     </li> 
                 }           
             }

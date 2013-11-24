@@ -49,6 +49,7 @@ namespace ShoppingCart.Domain.Concrete
         public DbSet<ProductAttributeTranslation> ProductAttributeTranslations { get; set; }
         public DbSet<ProductAttributeValueTranslation> ProductAttributeValueTranslations { get; set; }
         public DbSet<City> Cities { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 

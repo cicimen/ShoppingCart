@@ -23,12 +23,24 @@ namespace ShoppingCart.UI
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/masonry").Include(
-                      "~/Scripts/masonry.pkgd.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
+                        "~/Scripts/jquery-ui-{version}.js"));
+
+
+
+
+
+
+            //bundles.Add(new ScriptBundle("~/bundles/masonry").Include(
+            //          "~/Scripts/masonry.pkgd.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/themes/base/jquery-ui.all.css"));
         }
     }
 }

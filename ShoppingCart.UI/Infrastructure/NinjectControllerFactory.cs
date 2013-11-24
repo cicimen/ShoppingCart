@@ -32,6 +32,8 @@ namespace ShoppingCart.UI.Infrastructure
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
             ninjectKernel.Bind<ICategoryRepository>().To<EFCategoryRepository>();
             ninjectKernel.Bind<IProductImageRepository>().To<EFProductImageRepository>();
+            ninjectKernel.Bind<IAddressRepository>().To<EFAddressRepository>();
+           
             //ninjectKernel.Bind<ICartRepository>().To<EFCartRepository>();
         }
     }

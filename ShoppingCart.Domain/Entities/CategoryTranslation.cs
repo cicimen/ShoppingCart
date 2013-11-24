@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingCart.Domain.Entities
 {
-
+    [Table("CategoryTranslation")]
     public class CategoryTranslation
     {
         public int CategoryTranslationID { get; set; }

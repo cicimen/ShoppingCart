@@ -26,6 +26,11 @@ namespace ShoppingCart.UI
            );
 
             routes.MapRoute(null,
+           "Address",
+           new { controller = "Address", action = "Index" }
+           );
+
+            routes.MapRoute(null,
             "{page}",
             new { controller = "Home", action = "Index", categoryLinkText = (string)null },
             new { page = @"\d+" }

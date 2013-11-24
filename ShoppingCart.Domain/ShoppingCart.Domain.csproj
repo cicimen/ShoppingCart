@@ -92,13 +92,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAddressRepository.cs" />
+    <Compile Include="Abstract\IApplicationUserRepository.cs" />
+    <Compile Include="Abstract\ICityRepository.cs" />
     <Compile Include="Abstract\IProductImageRepository.cs" />
+    <Compile Include="Concrete\EFAddressRepository.cs" />
+    <Compile Include="Concrete\EFApplicationUserRepository.cs" />
     <Compile Include="Concrete\EFCategoryRepository.cs" />
     <Compile Include="Abstract\ICartRepository.cs" />
     <Compile Include="Abstract\ICategoryRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\EFCartRepository.cs" />
-    <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\ApplicationDbContext.cs" />
+    <Compile Include="Concrete\EFCityRepository.cs" />
     <Compile Include="Concrete\EFProductImageRepository.cs" />
     <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Concrete\IdentityModels.cs" />

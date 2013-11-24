@@ -11,19 +11,14 @@ namespace ShoppingCart.Domain.Entities
     public class Category 
     {
         public int CategoryID { get; set; }
-
         public virtual List<CategoryTranslation> CategoryTranslations { get; set; }
-
         public DateTime DateCreated { get; set; }
-
         public DateTime DateModified { get; set; }
-
         public string CategoryImagePath { get; set; }
-
         public string CategoryURLText { get; set; }
-
-        public virtual Category Parent { get; set; }
-        
+        public string CategoryMetaTags { get; set; }
+        public string CategoryMetaDescription { get; set; }
+        public virtual Category Parent { get; set; }       
         public virtual ICollection<Category> Children { get; set; }
         public virtual ICollection<CategoryNode> Ancestors { get; set; }
         public virtual ICollection<CategoryNode> Offspring { get; set; }
@@ -34,10 +29,8 @@ namespace ShoppingCart.Domain.Entities
     {
         public int AncestorId { get; set; }
         public virtual Category Ancestor { get; set; }
-
         public int OffspringId { get; set; }
         public virtual Category Offspring { get; set; }
-
         public int Separation { get; set; }
     }
 

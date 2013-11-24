@@ -23,7 +23,7 @@ namespace ShoppingCart.Domain.Concrete
             {
                 Product dbEntry = context.Products.Find(product.ProductID);
                 if (dbEntry != null)
-                {
+                {                   
                     dbEntry.Category = product.Category;
                     dbEntry.DateCreated = product.DateCreated;
                     dbEntry.DateModified = product.DateModified;
@@ -33,6 +33,8 @@ namespace ShoppingCart.Domain.Concrete
                     dbEntry.OriginalPrice = product.OriginalPrice;
                     dbEntry.ProductAttributes = product.ProductAttributes;
                     dbEntry.ProductImages = product.ProductImages;
+                    dbEntry.ProductMetaDescription = product.ProductMetaDescription;
+                    dbEntry.ProductMetaTags = product.ProductMetaTags;
                     dbEntry.ProductTranslations = product.ProductTranslations;
                     dbEntry.ProductURLText = product.ProductURLText;
                     dbEntry.RelatedProducts = product.RelatedProducts;

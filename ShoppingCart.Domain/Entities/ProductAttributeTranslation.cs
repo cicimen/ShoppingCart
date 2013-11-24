@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingCart.Domain.Entities
 {
+    [Table("ProductAttributeTranslation")]
     public class ProductAttributeTranslation
     {
         public int ProductAttributeTranslationID { get; set; }

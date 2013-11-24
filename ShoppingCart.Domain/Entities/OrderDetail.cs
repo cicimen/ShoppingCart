@@ -1,6 +1,8 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ShoppingCart.Domain.Entities
 {
+    [Table("OrderDetail")]
     public class OrderDetail
     {
         public int OrderDetailId { get; set; }
