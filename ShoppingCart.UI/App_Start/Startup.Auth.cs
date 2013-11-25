@@ -53,7 +53,13 @@ namespace ShoppingCart.UI
                             var claimType = string.Format("urn:facebook:{0}", x.Key);
                             string claimValue = x.Value.ToString();
                             if (!context.Identity.HasClaim(claimType, claimValue))
+                            {
+                                var userManager = new UserManager<ShoppingCart.Domain.Concrete.ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ShoppingCart.Domain.Concrete.ApplicationUser>(new ShoppingCart.Domain.Concrete.ApplicationDbContext()));
                                 context.Identity.AddClaim(new System.Security.Claims.Claim(claimType, claimValue, XmlSchemaString, "Facebook"));
+                                string userID = context.Identity.GetUserId();
+                                userManager.AddClaimAsync(context.Identity.GetUserId(),new Claim(claimType,claimValue));                                
+                                userManager.Dispose();
+                            }
                         }
                         return Task.FromResult(0);
                     }
@@ -62,6 +68,8 @@ namespace ShoppingCart.UI
             };
             facebookOptions.Scope.Add("email");
             facebookOptions.Scope.Add("user_birthday");
+            facebookOptions.Scope.Add("friends_about_me");
+            facebookOptions.Scope.Add("friends_photos");
             //facebookOptions.Scope.Add("friends_about_me");
             app.UseFacebookAuthentication(facebookOptions);
 

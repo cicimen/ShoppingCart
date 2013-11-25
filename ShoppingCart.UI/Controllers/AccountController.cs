@@ -203,6 +203,9 @@ namespace ShoppingCart.UI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
+            //TODO: pluralsight
+            var result = await AuthenticationManager.AuthenticateAsync(DefaultAuthenticationTypes.ExternalCookie);
+
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
@@ -214,6 +217,10 @@ namespace ShoppingCart.UI.Controllers
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
+
+                //TODO değiştirilebilir sonra. bu HER ZAMAN tokenları kaydediyor.
+                await StoreAuthTokenClaims(user);
+
                 return RedirectToLocal(returnUrl);
             }
             else
@@ -284,9 +291,11 @@ namespace ShoppingCart.UI.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        //TODO değiştirilebilir sonra. bu sadece registration da tokenları kaydediyor.
                         await StoreAuthTokenClaims(user);
 
                         await SignInAsync(user, isPersistent: false);

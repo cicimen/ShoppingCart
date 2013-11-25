@@ -21,6 +21,18 @@ namespace ShoppingCart.UI.Models
 
     public class SampleData : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
+        //protected override void Seed(Identity.Models.ApplicationDbContext context)
+        //{
+        //    if (!context.Users.Any(u => u.UserName == "sallen"))
+        //    {
+        //        var store = new UserStore<ApplicationUser>(context);
+        //        var manager = new UserManager<ApplicationUser>(store);
+        //        var user = new ApplicationUser { UserName = "sallen" };
+
+        //        manager.Create(user, "password");
+        //    }
+        //}
+
         protected override void Seed(ApplicationDbContext context)
         {
 
